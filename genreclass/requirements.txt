@@ -10,4 +10,4 @@ matplotlib
 sklearn
 librosa
 keras
-tenserflow
+tensorflow
