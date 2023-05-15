@@ -45,11 +45,11 @@ the international pop music your used to.
 """)
 st.markdown("##### The model is based on the mfcc put in 10 different segments. Here is sample of how each genre's MFCCs look like")
 image_folk = Image.open('genreclass/folk_MFCC.png')
-image_hiphop = Image.open('hiphop_MFCC.png')
-image_pop = Image.open('pop_MFCC.png')
-image_mpop = Image.open('mpop_MFCC.png')
-image_rock = Image.open('rock_MFCC.png')
-image_indie = Image.open('indie_MFCC.png')
+image_hiphop = Image.open('genreclass/hiphop_MFCC.png')
+image_pop = Image.open('genreclass/pop_MFCC.png')
+image_mpop = Image.open('genreclass/mpop_MFCC.png')
+image_rock = Image.open('genreclass/rock_MFCC.png')
+image_indie = Image.open('genreclass/indie_MFCC.png')
 st.image(image_folk, caption ="Folk genre", use_column_width=True)
 st.image(image_pop, caption ="Pop genre", use_column_width=True)
 st.image(image_mpop, caption ="Mpop genre", use_column_width=True)
@@ -57,7 +57,7 @@ st.image(image_rock, caption ="Rock genre", use_column_width=True)
 st.image(image_indie, caption ="Indie genre", use_column_width=True)
 
 #load model
-ann_model = pickle.load(open('ann_model.pkl', 'rb'))
+ann_model = pickle.load(open('genreclass/ann_model.pkl', 'rb'))
 
 #genre_dict for the output
 genre_dict = {0:'hiphop', 1:'rock', 2:'mpop', 3:'folk', 4:'pop', 5:'indie'}
