@@ -52,9 +52,16 @@ mffc_images = [
     'genreclass/rock_MFCC.png',
     'genreclass/indie_MFCC.png']
 
-image_iterator = paginator("Select a sunset page", mffc_images)
-indices_on_page, images_on_page = map(list, zip(*image_iterator))
-st.image(images_on_page, width=100, caption=indices_on_page)
+image_captions = [
+    'Folk MFCC',
+    'Hiphop MFCC',
+    'Pop MFCC', 
+    'Mpop MFCC',
+    'Rock MFCC',
+    'Indie MFCC']
+#image_iterator = paginator("Select a sunset page", mffc_images)
+#indices_on_page, images_on_page = map(list, zip(*image_iterator))
+st.image(mffc_images, width=100, caption=image_captions)
 
 #load model
 ann_model = pickle.load(open('genreclass/ann_model.pkl', 'rb'))
