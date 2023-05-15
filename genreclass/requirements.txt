@@ -9,5 +9,5 @@ seaborn
 matplotlib
 sklearn
 librosa
-keras
-tensorflow
+keras==2.10.0
+tensorflow==2.10.0
