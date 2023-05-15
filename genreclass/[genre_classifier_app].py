@@ -61,7 +61,7 @@ image_captions = [
     'Indie MFCC']
 #image_iterator = paginator("Select a sunset page", mffc_images)
 #indices_on_page, images_on_page = map(list, zip(*image_iterator))
-st.image(mffc_images, width=100, caption=image_captions)
+st.image(mffc_images, width=200, caption=image_captions)
 
 #load model
 ann_model = pickle.load(open('genreclass/ann_model.pkl', 'rb'))
