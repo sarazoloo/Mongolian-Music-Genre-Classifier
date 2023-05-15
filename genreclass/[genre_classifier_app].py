@@ -34,8 +34,6 @@ st.set_page_config(layout="wide")
 
 st.title('Mongolian Music Genre Classifier')
 
-
-st.header("Description")
 st.markdown(f""" ### This is a simple music classifier with around 6000 audio files and 6 different genres.
 Each audio file is 30 seconds long. The 6 genres are:
 \n Pop, mpop, rock, indie, folk, and hiphop.
