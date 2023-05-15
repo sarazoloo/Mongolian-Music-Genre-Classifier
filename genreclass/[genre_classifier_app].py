@@ -90,7 +90,7 @@ try:
         st.audio( audio_file)
     else:
         yt_url = st.text_input("Input youtube url")
-        if len(yt_url) > 0
+        if len(yt_url) > 0:
             audio_file = youtube_to_mp3(yt_url)
             st.audio(yt_url)
 except:
