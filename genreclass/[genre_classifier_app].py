@@ -44,7 +44,7 @@ If you are wondering about what mpop is it's mongolian pop, slightly different f
 the international pop music your used to.
 """)
 st.markdown("##### The model is based on the mfcc put in 10 different segments. Here is sample of how each genre's MFCCs look like")
-image_folk = Image.open('folk_MFCC.png')
+image_folk = Image.open('genreclass/folk_MFCC.png')
 image_hiphop = Image.open('hiphop_MFCC.png')
 image_pop = Image.open('pop_MFCC.png')
 image_mpop = Image.open('mpop_MFCC.png')
