@@ -44,17 +44,17 @@ If you are wondering about what mpop is it's mongolian pop, slightly different f
 the international pop music your used to.
 """)
 st.markdown("##### The model is based on the mfcc put in 10 different segments. Here is sample of how each genre's MFCCs look like")
-image_folk = Image.open('genreclass/folk_MFCC.png')
-image_hiphop = Image.open('genreclass/hiphop_MFCC.png')
-image_pop = Image.open('genreclass/pop_MFCC.png')
-image_mpop = Image.open('genreclass/mpop_MFCC.png')
-image_rock = Image.open('genreclass/rock_MFCC.png')
-image_indie = Image.open('genreclass/indie_MFCC.png')
-st.image(image_folk, caption ="Folk genre", use_column_width=True)
-st.image(image_pop, caption ="Pop genre", use_column_width=True)
-st.image(image_mpop, caption ="Mpop genre", use_column_width=True)
-st.image(image_rock, caption ="Rock genre", use_column_width=True)
-st.image(image_indie, caption ="Indie genre", use_column_width=True)
+mffc_images = [
+    'genreclass/folk_MFCC.png',
+    'genreclass/hiphop_MFCC.png',
+    'genreclass/pop_MFCC.png',
+    'genreclass/mpop_MFCC.png',
+    'genreclass/rock_MFCC.png',
+    'genreclass/indie_MFCC.png']
+
+image_iterator = paginator("Select a sunset page", mffc_images)
+indices_on_page, images_on_page = map(list, zip(*image_iterator))
+st.image(images_on_page, width=100, caption=indices_on_page)
 
 #load model
 ann_model = pickle.load(open('genreclass/ann_model.pkl', 'rb'))
