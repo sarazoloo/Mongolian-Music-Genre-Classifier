@@ -1,0 +1,11 @@
+pip
+python_speech_features==0.6
+pytube==15.0.0
+streamlit
+isodate
+pandas
+numpy
+seaborn
+matplotlib
+sklearn
+librosa
