@@ -72,7 +72,7 @@ genre_dict = {0:'hiphop', 1:'rock', 2:'mpop', 3:'folk', 4:'pop', 5:'indie'}
 def download_audio_to_buffer(url):
     buffer = BytesIO()
     youtube_video = YouTube(url)
-    audio = youtube_video.streams.get_audio_only()
+    audio = youtube_video.filter(only_audio=True).first()
     default_filename = audio.default_filename
     audio.stream_to_buffer(buffer)
     return default_filename, buffer
@@ -87,13 +87,13 @@ def main():
         st.write(default_filename)
         title_vid = Path(default_filename).with_suffix(".mp3").name
         st.subheader("Listen to Audio")
-        st.audio(buffer, format='wav/mp3')
+        st.audio(buffer, format='wav/mpeg')
         st.subheader("Download Audio File")
         st.download_button(
             label="Download mp3",
             data=buffer,
             file_name=title_vid,
-            mime="wav/mp3")
+            mime="wav/mpeg")
 
 
 #try:
