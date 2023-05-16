@@ -74,7 +74,7 @@ def youtube_to_mp3(url):
         video = yt.streams.filter(only_audio=True).first()
         #print("Enter the destination address (leave blank to save in current directory)")
         #destination = str(input(" ")) or '.'
-        out_file = video.download(output_path='.')
+        out_file = video.download(output_path='/genreclass/download')
         base, ext = os.path.splitext(out_file)
         new_file = base + '.mp3'
         os.rename(out_file, new_file)
