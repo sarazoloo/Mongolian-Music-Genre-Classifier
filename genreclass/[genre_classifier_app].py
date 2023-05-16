@@ -143,7 +143,6 @@ def predict(X_predict):
 predict_button = st.button("Predict music genre", key = '01')
 #prediction button
 if predict_button:
-    st.
     input_mfcc = process_input(audio_file)
     genre, percentage = predict(X_predict=input_mfcc)
 
