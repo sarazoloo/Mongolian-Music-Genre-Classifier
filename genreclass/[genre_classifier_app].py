@@ -140,7 +140,7 @@ def predict(X_predict):
     return pred_genre, pred_percen
 
         
-predict_button = st.button(:blue["Predict music genre"], key = '01')
+predict_button = st.button("Predict music genre", key = '01')
 #prediction button
 if predict_button:
     st.
