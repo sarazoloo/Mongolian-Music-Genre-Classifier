@@ -72,7 +72,7 @@ genre_dict = {0:'hiphop', 1:'rock', 2:'mpop', 3:'folk', 4:'pop', 5:'indie'}
 def download_audio_to_buffer(url):
     buffer = BytesIO()
     youtube_video = YouTube(url)
-    audio = youtube_video.filter(only_audio=True).first()
+    audio = youtube_video.stream.get_audio_only()
     default_filename = audio.default_filename
     audio.stream_to_buffer(buffer)
     return default_filename, buffer
