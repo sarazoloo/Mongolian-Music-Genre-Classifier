@@ -32,14 +32,14 @@ import json
 sns.set(style="darkgrid", color_codes=True)
 st.set_page_config(layout="wide")
 
-st.title('Mongolian Music Genre Classifier')
+st.title('Mongolian Music Genre Classifier :flag-mn:')
 
 st.markdown(f""" ### This is a simple music classifier with around 6000 audio files and 6 different genres.
 Each audio file is 30 seconds long. The 6 genres are:
 \n Pop, mpop, rock, indie, folk, and hiphop.
 Although there are a lot of genres mongolian most songs fall into the genres pop, and hiphop.
 If you are wondering about what mpop is it's mongolian pop, slightly different from 
-the international pop music your used to.
+the international pop music your used to. :musical_note:
 """)
 st.markdown("##### The model is based on the mfcc put in 10 different segments. Here is sample of how each genre's MFCCs look like")
 mffc_images = [
