@@ -68,7 +68,6 @@ ann_model = pickle.load(open('genreclass/ann_model.pkl', 'rb'))
 genre_dict = {0:'hiphop', 1:'rock', 2:'mpop', 3:'folk', 4:'pop', 5:'indie'}
 
 #url to mp3 converter
-
 @st.cache_data(show_spinner=False)
 def download_audio_to_buffer(url):
     buffer = BytesIO()
@@ -78,23 +77,23 @@ def download_audio_to_buffer(url):
     audio.stream_to_buffer(buffer)
     return default_filename, buffer
 
-
-st.title("Download Audio from Youtube")
-url = st.text_input("Insert Youtube URL:")
-if url:
-    with st.spinner("Downloading Audio Stream from Youtube..."):
-        default_filename, buffer = download_audio_to_buffer(url)
+def main():
+    st.title("Download Audio from Youtube")
+    url = st.text_input("Insert Youtube URL:")
+    if url:
+        with st.spinner("Downloading Audio Stream from Youtube..."):
+            default_filename, buffer = download_audio_to_buffer(url)
         st.subheader("Title")
         st.write(default_filename)
         title_vid = Path(default_filename).with_suffix(".mp3").name
         st.subheader("Listen to Audio")
-        st.audio(buffer, format='wav/mpg')
+        st.audio(buffer, format='wav/mp3')
         st.subheader("Download Audio File")
         st.download_button(
             label="Download mp3",
-            data=buffer, key = '01',
+            data=buffer,
             file_name=title_vid,
-            mime="wav/mpg3")
+            mime="wav/mp3")
 
 
 #try:
@@ -173,4 +172,7 @@ if predict_button:
 
 else:
     st.write('No files uploaded')
+    
+if __name__ == "__main__":
+    main()
     
