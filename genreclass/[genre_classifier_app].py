@@ -83,10 +83,8 @@ def download_audio_to_buffer(url):
 
 st.title("Download Audio from Youtube")
 url = st.text_input("Insert Youtube URL:")
-   
-    if url:
-        with st.spinner("Downloading Audio Stream from Youtube..."):
-
+if url:
+    with st.spinner("Downloading Audio Stream from Youtube..."):
         default_filename, buffer = download_audio_to_buffer(url)
         st.subheader("Title")
         st.write(default_filename)
