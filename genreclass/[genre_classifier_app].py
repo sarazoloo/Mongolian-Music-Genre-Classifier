@@ -1,5 +1,3 @@
-
-#SizeRestrictions_BODY.
 import streamlit as st
 import isodate
 from io import BytesIO
@@ -94,7 +92,7 @@ if url:
         st.subheader("Download Audio File")
         st.download_button(
             label="Download mp3",
-            data=buffer,
+            data=buffer, key = '01',
             file_name=title_vid,
             mime="wav/mpg3")
 
@@ -164,7 +162,7 @@ def predict(X_predict):
     return pred_genre, pred_percen
 
         
-predict_button = st.button("Predict music genre", key = '01')
+predict_button = st.button("Predict music genre", key = '02')
 #prediction button
 if predict_button:
     input_mfcc = process_input(audio_file)
@@ -176,6 +174,3 @@ if predict_button:
 else:
     st.write('No files uploaded')
     
-    
-if __name__ == "__main__":
-    main()
