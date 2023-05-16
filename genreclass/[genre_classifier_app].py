@@ -70,23 +70,6 @@ ann_model = pickle.load(open('genreclass/ann_model.pkl', 'rb'))
 genre_dict = {0:'hiphop', 1:'rock', 2:'mpop', 3:'folk', 4:'pop', 5:'indie'}
 
 #url to mp3 converter
-def youtube_to_mp3(url): 
-    try:
-        yt = YouTube(str(url))
-        video = yt.streams.filter(only_audio=True).first()
-        #print("Enter the destination address (leave blank to save in current directory)")
-        #destination = str(input(" ")) or '.'
-        out_file = video.download(output_path='/genreclass/download')
-        base, ext = os.path.splitext(out_file)
-        new_file = base + '.mp3'
-        os.rename(out_file, new_file)
-    except:
-        raise
-    return print(yt.title + " has been successfully loaded ")
-
-
-
-#st.set_page_config(page_title="Download Audio", page_icon="🎵", layout="centered", initial_sidebar_state="collapsed")
 
 @st.cache_data(show_spinner=False)
 def download_audio_to_buffer(url):
@@ -97,26 +80,26 @@ def download_audio_to_buffer(url):
     audio.stream_to_buffer(buffer)
     return default_filename, buffer
 
-def main():
-    st.title("Download Audio from Youtube")
-    url = st.text_input("Insert Youtube URL:")
+
+st.title("Download Audio from Youtube")
+url = st.text_input("Insert Youtube URL:")
+   
     if url:
         with st.spinner("Downloading Audio Stream from Youtube..."):
-            default_filename, buffer = download_audio_to_buffer(url)
+
+        default_filename, buffer = download_audio_to_buffer(url)
         st.subheader("Title")
         st.write(default_filename)
         title_vid = Path(default_filename).with_suffix(".mp3").name
         st.subheader("Listen to Audio")
-        st.audio(buffer, format='audio/mpeg')
+        st.audio(buffer, format='wav/mpg')
         st.subheader("Download Audio File")
         st.download_button(
             label="Download mp3",
             data=buffer,
             file_name=title_vid,
-            mime="audio/mpeg")
+            mime="wav/mpg3")
 
-
-st.subheader("Youtube url to mp3 converter")
 
 #try:
 #    if url:
