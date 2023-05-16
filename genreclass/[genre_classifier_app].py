@@ -78,7 +78,7 @@ def youtube_to_mp3(url):
         base, ext = os.path.splitext(out_file)
         new_file = base + '.mp3'
         os.rename(out_file, new_file)
-    else:
+    except:
         raise
     return print(yt.title + " has been successfully loaded ")
 
