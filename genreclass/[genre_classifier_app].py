@@ -194,3 +194,7 @@ if predict_button:
 
 else:
     st.write('No files uploaded')
+    
+    
+if __name__ == "__main__":
+    main()
