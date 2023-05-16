@@ -68,16 +68,18 @@ ann_model = pickle.load(open('genreclass/ann_model.pkl', 'rb'))
 genre_dict = {0:'hiphop', 1:'rock', 2:'mpop', 3:'folk', 4:'pop', 5:'indie'}
 
 #url to mp3 converter
-def youtube_to_mp3(url):    
-    yt = YouTube(str(url))
-    video = yt.streams.filter(only_audio=True).first()
-    #print("Enter the destination address (leave blank to save in current directory)")
-    #destination = str(input(" ")) or '.'
-    out_file = video.download(output_path='.')
-    base, ext = os.path.splitext(out_file)
-    new_file = base + '.mp3'
-    os.rename(out_file, new_file)
-    
+def youtube_to_mp3(url): 
+    try:
+        yt = YouTube(str(url))
+        video = yt.streams.filter(only_audio=True).first()
+        #print("Enter the destination address (leave blank to save in current directory)")
+        #destination = str(input(" ")) or '.'
+        out_file = video.download(output_path='.')
+        base, ext = os.path.splitext(out_file)
+        new_file = base + '.mp3'
+        os.rename(out_file, new_file)
+    else:
+        raise
     return print(yt.title + " has been successfully loaded ")
 
 st.header("File upload")
@@ -138,13 +140,15 @@ def predict(X_predict):
     return pred_genre, pred_percen
 
         
-predict_button = st.button("Predict music genre", key = '01')
+predict_button = st.button(:blue["Predict music genre"], key = '01')
 #prediction button
 if predict_button:
+    st.
     input_mfcc = process_input(audio_file)
     genre, percentage = predict(X_predict=input_mfcc)
 
-    st.write("Prediction results", genre, percentage, "%")
+    st.write(f"""Prediction results: {genre}
+    \n with percentage of: {percentage} "%""")
 
 else:
     st.write('No files uploaded')
