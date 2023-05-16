@@ -67,6 +67,17 @@ ann_model = pickle.load(open('genreclass/ann_model.pkl', 'rb'))
 #genre_dict for the output
 genre_dict = {0:'hiphop', 1:'rock', 2:'mpop', 3:'folk', 4:'pop', 5:'indie'}
 
+st.header("File upload")
+st.markdown("### You can either upload an mp3 file or convert youtube url and upload that downloaded file!")
+
+uploaded_file = st.file_uploader("Please upload a .mp3")
+st.write (f""" Upload a file or upload a URL""") 
+if uploaded_file is not None:
+    audio_file = uploaded_file
+    st.audio(audio_file)
+else:
+    st.write("No file is uploaded")
+
 #url to mp3 converter
 @st.cache_data(show_spinner=False)
 def download_audio_to_buffer(url):
@@ -78,7 +89,7 @@ def download_audio_to_buffer(url):
     return default_filename, buffer
 
 def main():
-    st.title("Download Audio from Youtube")
+    st.subheader("Download Audio from Youtube")
     url = st.text_input("Insert Youtube URL:")
     if url:
         with st.spinner("Downloading Audio Stream from Youtube..."):
@@ -87,37 +98,13 @@ def main():
         st.write(default_filename)
         title_vid = Path(default_filename).with_suffix(".mp3").name
         st.subheader("Listen to Audio")
-        st.audio(buffer, format='wav/mpeg')
+        st.audio(buffer, format='wav/mp3')
         st.subheader("Download Audio File")
         st.download_button(
             label="Download mp3",
             data=buffer,
             file_name=title_vid,
-            mime="wav/mpeg")
-
-
-#try:
-#    if url:
-#        yt = YouTube(str(url))
-#        video = yt.streams.filter(only_audio=True).first()
-#        st.download('Download music to your computer', data = video, file_name = f"""{}.mp3""", key = '02')
-#    else:
-#        if len(yt_url) > 0:
-#            st.write("No url uploaded")             
-#            audio_file = youtube_to_mp3(yt_url)
-#            st.audio(audio_file)
-#except:
-#    # print("File upload error")
-#    raise
-                               
-st.subheader("File upload")
-uploaded_file = st.file_uploader("Please upload a .mp3")
-st.write (f""" Upload a file or upload a URL""") 
-if uploaded_file is not None:
-    audio_file = uploaded_file
-    st.audio(audio_file)
-else:
-    st.write("No file is uploaded")
+            mime="wav/mp3")
      
 
 #processing audio file to get mfcc
