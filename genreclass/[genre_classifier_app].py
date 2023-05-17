@@ -2,7 +2,6 @@ import streamlit as st
 import isodate
 from io import BytesIO
 from pathlib import Path
-
 import pickle
 import pytube as pt
 from pytube import YouTube
@@ -27,8 +26,6 @@ import librosa
 import librosa.display
 
 import json
-
-
 sns.set(style="darkgrid", color_codes=True)
 st.set_page_config(layout="wide")
 
