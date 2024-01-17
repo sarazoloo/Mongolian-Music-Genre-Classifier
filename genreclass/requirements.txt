@@ -7,7 +7,7 @@ pandas
 numpy
 seaborn
 matplotlib
-sklearn
+scikit-learn
 librosa
 keras==2.10.0
 tensorflow==2.10.0
